@@ -21,7 +21,7 @@ const getters = {
 
 const actions = {
     isArticles (context) {
-        Axios.get(Axios.defaults.baseURL + 'article').then(res => {
+        Axios.get(Axios.defaults.baseURL + 'articles').then(res => {
             const isArticles = res.data.data.articles;
             const popularArticles = res.data.data.popular_articles;
             context.commit('isArticles', isArticles);
@@ -31,7 +31,7 @@ const actions = {
         })
     },
     getArticles (context) {
-        Axios.get(Axios.defaults.baseURL + 'panel/article').then(res => {
+        Axios.get(Axios.defaults.baseURL + 'panel/articles').then(res => {
             const getArticles = res.data.data.data;
             context.commit('getArticles', getArticles)
         }).catch(err => {

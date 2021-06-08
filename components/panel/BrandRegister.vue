@@ -8,10 +8,19 @@
                         <form @submit.prevent="onRegister()">
 
                             <div class="row">
-                                <div class="col-md-12">
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <input type="text" v-model="name" name="name" id="name"
                                                class="form-control" placeholder="Name">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <select v-model="employeeId" name="employeeId" id="employeeId"
+                                                class="form-control">
+                                            <option value="">Employee</option>
+                                            <option v-for="employee in employees" :value="employee.id">{{ employee.username }}</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
@@ -35,25 +44,25 @@
                             <div class="col-md-4">
                               <div class="form-group">
                                 <div class="form-check">
-                                  <input class="form-check-input" type="radio" name="status" id="ACTIVE" value="ACTIVE">
+                                  <input class="form-check-input" type="radio" v-model="status" name="status" id="ACTIVE" value="ACTIVE">
                                   <label class="form-check-label" for="ACTIVE">
                                     ACTIVE
                                   </label>
                                 </div>
                                 <div class="form-check">
-                                  <input class="form-check-input" type="radio" name="status" id="INACTIVE" value="INACTIVE">
+                                  <input class="form-check-input" type="radio" v-model="status" name="status" id="INACTIVE" value="INACTIVE">
                                   <label class="form-check-label" for="INACTIVE">
                                     INACTIVE
                                   </label>
                                 </div>
                                 <div class="form-check">
-                                  <input class="form-check-input" type="radio" name="status" id="SUSPENDED" value="SUSPENDED">
+                                  <input class="form-check-input" type="radio" v-model="status" name="status" id="SUSPENDED" value="SUSPENDED">
                                   <label class="form-check-label" for="SUSPENDED">
                                     SUSPENDED
                                   </label>
                                 </div>
                                 <div class="form-check">
-                                  <input class="form-check-input" type="radio" name="status" id="PENDING" value="PENDING">
+                                  <input class="form-check-input" type="radio" v-model="status" name="status" id="PENDING" value="PENDING">
                                   <label class="form-check-label" for="PENDING">
                                     PENDING
                                   </label>
@@ -85,22 +94,36 @@
 </template>
 
 <script>
+    import {mapState} from 'vuex';
+
     export default {
         middleware: 'checkAuthEmployee',
         name: "BrandRegister",
+        mounted() {
+            return this.$store.dispatch('Employees/getEmployees');
+        },
         data () {
             return {
                 name: '',
+                employeeId: '',
                 description: '',
+                status: '',
             }
+        },
+        computed: {
+            ...mapState({
+                employees: state => state.Employees.getEmployees,
+            })
         },
         methods: {
             onRegister() {
                 const isRegister = {
                     name: this.name,
+                    employeeId: this.employeeId,
                     description: this.description,
+                    status: this.status,
                 };
-                //AuthService.register(isRegister);
+                return this.$store.dispatch('Brands/RegisterBrand', isRegister)
             },
         }
     }

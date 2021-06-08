@@ -20,7 +20,7 @@ const getters = {
 
 const actions = {
     isProductCategories(context) {
-        Axios.get(Axios.defaults.baseURL + 'product/category').then(res => {
+        Axios.get(Axios.defaults.baseURL + 'product-categories').then(res => {
             const isProductCategories = res.data.data.product_categories;
             const popularProductCategories = res.data.data.popular_product_categories;
             context.commit('isProductCategories', isProductCategories);
@@ -30,7 +30,7 @@ const actions = {
         })
     },
     getProductCategories(context) {
-        Axios.get(Axios.defaults.baseURL + 'panel/product/category').then(res => {
+        Axios.get(Axios.defaults.baseURL + 'panel/product-categories').then(res => {
             const getProductCategories = res.data.data.data;
             context.commit('getProductCategories', getProductCategories)
         }).catch(err => {
@@ -44,7 +44,7 @@ const actions = {
             title: payload.title,
             description: payload.description,
         };
-        Axios.patch(Axios.defaults.baseURL + 'panel/product/category' + payload.id, isUpdate)
+        Axios.patch(Axios.defaults.baseURL + 'panel/product-categories' + payload.id, isUpdate)
             .then(res => {
                 const getProductCategories = res.data.data.data;
                 context.commit('getProductCategories', getProductCategories)
@@ -58,7 +58,7 @@ const actions = {
             title: payload.title,
             description: payload.description,
         };
-        Axios.post(Axios.defaults.baseURL + 'panel/product/category', isUpdate)
+        Axios.post(Axios.defaults.baseURL + 'panel/product-categories', isUpdate)
             .then(res => {
                 const getProductCategories = res.data.data.data;
                 context.commit('getProductCategories', getProductCategories)

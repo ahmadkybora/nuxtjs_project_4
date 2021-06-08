@@ -1,6 +1,6 @@
 import Axios from 'axios'
 
-Axios.defaults.baseURL = 'http://localhost:8000/api/';
+/*Axios.defaults.baseURL = 'http://localhost:3001/api/';
 const employeeToken = window.localStorage.getItem('token-employee');
 const userToken = window.localStorage.getItem('user-token');
 
@@ -16,7 +16,7 @@ if (userToken) {
     Axios.defaults.headers.common['X-Requested-With'] = 'XmlHttpRequest';
     Axios.defaults.headers.common['Content-type'] = 'Application/json';
     Axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
-}
+}*/
 
 const state = () => ({
   tokenEmployee: window.localStorage.getItem('token-employee'),
@@ -79,10 +79,10 @@ const actions = {
       username: payload.username,
       password: payload.password,
     };
-    Axios.post(Axios.defaults.baseURL + 'panel/login', login)
+    Axios.post(Axios.defaults.baseURL + 'login', login)
       .then(res => {
         const employee = res.data.data;
-        const tokenEmployee = employee.token;
+        const tokenEmployee = employee.accessToken;
         const isLogin = {
           username: employee.username,
           first_name: employee.first_name,
@@ -117,6 +117,9 @@ const actions = {
       })
   },
   isEmployeeLogout(context){
+      window.localStorage.removeItem('token-employee');
+      window.localStorage.removeItem('is-admin');
+      window.location.reload();
     Axios.get(Axios.defaults.baseURL + 'panel/logout', {
       headers: {
         Authorization: 'Bearer ' + context.state.tokenEmployee,
@@ -160,7 +163,7 @@ const actions = {
     Axios.post(Axios.defaults.baseURL + 'login', login)
       .then(res => {
         const user = res.data.data;
-        const tokenUser = user.token;
+        const tokenUser = user.accessToken;
         const isLogin = {
           username: user.username,
           first_name: user.first_name,

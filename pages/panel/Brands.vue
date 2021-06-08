@@ -72,11 +72,10 @@
         <thead class="text-center">
         <tr>
           <th>#</th>
-          <th>Full Name</th>
-          <th>UserName</th>
-          <th>Email</th>
-          <th>Gender</th>
-          <th>Icon</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Employee</th>
+          <th>Image</th>
           <th>Status</th>
           <th>Created At / Updated At</th>
           <th>Option</th>
@@ -85,26 +84,27 @@
         <tbody class="text-center">
         <tr v-for="(brand, index) in brands" :key="brand.id">
           <td>{{ index }}</td>
-          <td v-text="brand.title"></td>
+          <td v-text="brand.name"></td>
           <td v-text="brand.description"></td>
+          <td v-text="brand.employeeId"></td>
           <td>
-            <img class="rounded-circle" :src="brand.icon" style="width: 50px; height: 50px">
+            <img class="rounded-circle" :src="brand.image" style="width: 50px; height: 50px">
           </td>
           <td>
-            <button v-if="brand.state === 'ACTIVE'" class="btn btn-success btn-sm disabled"
-                    v-text="brand.state">ACTIVE
+            <button v-if="brand.status === 'ACTIVE'" class="btn btn-success btn-sm disabled"
+                    v-text="brand.status">ACTIVE
             </button>
-            <button v-if="brand.state === 'INACTIVE'" class="btn btn-warning btn-sm disabled"
-                    v-text="brand.state">INACTIVE
+            <button v-if="brand.status === 'INACTIVE'" class="btn btn-warning btn-sm disabled"
+                    v-text="brand.status">INACTIVE
             </button>
-            <button v-if="brand.state === 'SUSPENDED'" class="btn btn-secondary btn-sm disabled"
-                    v-text="brand.state">SUSPENDED
+            <button v-if="brand.status === 'SUSPENDED'" class="btn btn-secondary btn-sm disabled"
+                    v-text="brand.status">SUSPENDED
             </button>
-            <button v-if="brand.state === 'PENDING'" class="btn btn-danger btn-sm disabled"
-                    v-text="brand.state">PENDING
+            <button v-if="brand.status === 'PENDING'" class="btn btn-danger btn-sm disabled"
+                    v-text="brand.status">PENDING
             </button>
           </td>
-          <td>{{ brand.created_at + ' ' + brand.updated_at }}</td>
+          <td>{{ brand.createdAt + ' ' + brand.updatedAt }}</td>
           <td>
             <a @click="brandShow(brand.id)" data-toggle="modal" data-target="#exampleModal">
               <i class="fas fa-eye text-primary"></i>

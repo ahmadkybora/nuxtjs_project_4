@@ -3,8 +3,8 @@ import Vuex from 'vuex'
 import Axios from 'axios'
 
 Vue.use(Vuex);
-Axios.defaults.baseURL = 'http://localhost:8000/api/';
-Vue.prototype.$http = Axios;
+Axios.defaults.baseURL = 'http://localhost:3001/api/';
+//Vue.prototype.$http = Axios;
 
 import Auth from './modules/auth';
 import Users from './modules/users';
@@ -16,18 +16,18 @@ import ArticleCategories from './modules/articleCategories';
 import Brands from './modules/brands';
 import Carts from './modules/carts';
 
-Axios.defaults.baseURL = 'http://localhost:8000/api/';
+//Axios.defaults.baseURL = 'http://localhost:3001/api/';
 const employeeToken = window.localStorage.getItem('token-employee');
 const userToken = window.localStorage.getItem('token-user');
 
-if (employeeToken) {
+if (employeeToken !== null && employeeToken !== undefined) {
   Axios.defaults.headers.common.Authorization = `Bearer ${employeeToken}`;
   Axios.defaults.headers.common['X-Requested-With'] = 'XmlHttpRequest';
   Axios.defaults.headers.common['Content-type'] = 'Application/json';
   Axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
 }
 
-if (userToken) {
+if (userToken !== null && userToken !== undefined) {
   Axios.defaults.headers.common.Authorization = `Bearer ${userToken}`;
   Axios.defaults.headers.common['X-Requested-With'] = 'XmlHttpRequest';
   Axios.defaults.headers.common['Content-type'] = 'Application/json';

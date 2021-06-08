@@ -25,7 +25,7 @@ const getters = {
 
 const actions = {
     async isProducts(context) {
-        await Axios.get(Axios.defaults.baseURL + 'product')
+        await Axios.get(Axios.defaults.baseURL + 'products')
             .then(res => {
                 const isProducts = res.data.data.products;
                 const popularProducts = res.data.data.popular_products;
@@ -38,7 +38,7 @@ const actions = {
             })
     },
     async getProducts(context, page = 1) {
-        await Axios.get(Axios.defaults.baseURL + `panel/product?page= ${page}`)
+        await Axios.get(Axios.defaults.baseURL + `panel/products?page= ${page}`)
             .then(res => {
                 const getProducts = res.data.data;
                 //console.log(getProducts)
@@ -58,7 +58,7 @@ const actions = {
             icon: payload.icon,
             status: payload.status,
         };
-        await Axios.patch(Axios.defaults.baseURL + 'panel/product/' + payload.id, isUpdate)
+        await Axios.patch(Axios.defaults.baseURL + 'panel/products/' + payload.id, isUpdate)
             .then(res => {
                 switch (res.status) {
                     case 200:
@@ -94,7 +94,7 @@ const actions = {
             icon: payload.icon,
             status: payload.status,
         };
-        await Axios.post(Axios.defaults.baseURL + 'panel/product', isRegister,
+        await Axios.post(Axios.defaults.baseURL + 'panel/products', isRegister,
             {
                 headers: {
                     'Content-Type': 'multipart/form-data'
