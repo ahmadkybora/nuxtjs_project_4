@@ -1,0 +1,90 @@
+[
+  {
+    "id": 1,
+    "title": "Dashboard Manager",
+    "titleIcon": "fas fa-eye",
+    "body_1": "Dashboard_1",
+    "bodyIcon_1": "fas fa-eye",
+    "body_2": "Dashboard_2",
+    "bodyIcon_2": "fas fa-eye",
+    "route_1": "/panel/dashboard",
+    "route_2": "/"
+  },
+  {
+    "id": 2,
+    "title": "Employees Manager",
+    "titleIcon": "fa fa-shopping-cart",
+    "body_1": "Show All Employees",
+    "bodyIcon_1": "fa fa-shopping-cart",
+    "body_2": "Register Employees",
+    "bodyIcon_2": "fas fa-eye",
+    "route_1": "/panel/employees",
+    "route_2": "/panel/employees/register"
+  },
+  {
+    "id": 3,
+    "title": "Users Manager",
+    "titleIcon": "fa fa-calendar",
+    "body_1": "Show All Users",
+    "bodyIcon_1": "fa fa-calendar",
+    "body_2": "Register Users",
+    "bodyIcon_2": "fas fa-eye",
+    "route_1": "/panel/users",
+    "route_2": "/panel/users/register"
+  },
+  {
+    "id": 4,
+    "title": "brand Manager",
+    "titleIcon": "fas fa-eye",
+    "body_1": "Show All Brands",
+    "bodyIcon_1": "fas fa-eye",
+    "body_2": "Register Brands",
+    "bodyIcon_2": "fas fa-eye",
+    "route_1": "/panel/brands",
+    "route_2": "/panel/brands/register"
+  },
+  {
+    "id": 5,
+    "title": "Product Categories Manager",
+    "titleIcon": "fa fa-envelope",
+    "body_1": "Show All Product Categories",
+    "bodyIcon_1": "fas fa-eye",
+    "body_2": "Register Product Categories",
+    "bodyIcon_2": "fas fa-eye",
+    "route_1": "/panel/productCategories",
+    "route_2": "/panel/productCategories/register"
+  },
+  {
+    "id": 6,
+    "title": "Article Categories Manager",
+    "titleIcon": "fas fa-eye",
+    "body_1": "Show All Article Categories",
+    "bodyIcon_1": "fas fa-eye",
+    "body_2": "Register Article Categories",
+    "bodyIcon_2": "fas fa-eye",
+    "route_1": "/panel/articleCategories",
+    "route_2": "/panel/articleCategories/register"
+  },
+  {
+    "id": 7,
+    "title": "Products Manager",
+    "titleIcon": "fa fa-envelope",
+    "body_1": "Show All Products",
+    "bodyIcon_1": "fa fa-envelope",
+    "body_2": "Register Products",
+    "bodyIcon_2": "fa fa-envelope",
+    "route_1": "/panel/products",
+    "route_2": "/panel/products/register"
+  },
+  {
+    "id": 8,
+    "title": "Articles Manager",
+    "titleIcon": "fas fa-eye",
+    "body_1": "Show All Articles",
+    "bodyIcon_1": "fas fa-eye",
+    "body_2": "Register Articles",
+    "bodyIcon_2": "fas fa-eye",
+    "route_1": "/panel/articles",
+    "route_2": "/panel/articles/register"
+  }
+]
