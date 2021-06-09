@@ -49,14 +49,27 @@ const actions = {
             console.log(err)
         })
     },
-    RegisterBrand(context, payload) {
-        const isRegister = {
+    async RegisterBrand(context, payload) {
+        let formData = new FormData();
+
+        formData.append('name', payload.name);
+        formData.append('employeeId', payload.employeeId);
+        formData.append('description', payload.description);
+        formData.append('status', payload.status);
+        formData.append('image', payload.image);
+
+        /*const isRegister = {
             name: payload.name,
             employeeId: payload.employeeId,
             description: payload.description,
             status: payload.status,
-        };
-        Axios.post(Axios.defaults.baseURL + 'panel/brands/store', isRegister)
+            image: payload.image
+        };*/
+            await Axios.post(Axios.defaults.baseURL + 'panel/brands/store', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                },
+            })
             .then(res => {
                 const getBrands = res.data.data;
                 context.commit('getBrands', getBrands)

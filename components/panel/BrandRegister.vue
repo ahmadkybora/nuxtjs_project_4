@@ -5,7 +5,7 @@
                 <div class="col-md-12">
                     <div class="jumbotron">
                         <h3>Register Brands</h3>
-                        <form @submit.prevent="onRegister()">
+                        <form @submit.prevent="onRegister()" enctype="multipart/form-data">
 
                             <div class="row">
                                 <div class="col-md-6">
@@ -72,7 +72,7 @@
 
                             <div class="col-md-4">
                               <div class="form-group">
-                                <input type="file" class="form-control">
+                                <input type="file" @change="onFileSelected" name="image" id="image" class="form-control">
                               </div>
                             </div>
                           </div>
@@ -108,6 +108,7 @@
                 employeeId: '',
                 description: '',
                 status: '',
+                image: ''
             }
         },
         computed: {
@@ -116,12 +117,16 @@
             })
         },
         methods: {
+            onFileSelected(event) {
+                return this.image = event.target.files[0];
+            },
             onRegister() {
                 const isRegister = {
                     name: this.name,
                     employeeId: this.employeeId,
                     description: this.description,
                     status: this.status,
+                    image: this.image,
                 };
                 return this.$store.dispatch('Brands/RegisterBrand', isRegister)
             },

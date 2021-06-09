@@ -16,22 +16,19 @@ import ArticleCategories from './modules/articleCategories';
 import Brands from './modules/brands';
 import Carts from './modules/carts';
 
-//Axios.defaults.baseURL = 'http://localhost:3001/api/';
 const employeeToken = window.localStorage.getItem('token-employee');
 const userToken = window.localStorage.getItem('token-user');
 
 if (employeeToken !== null && employeeToken !== undefined) {
   Axios.defaults.headers.common.Authorization = `Bearer ${employeeToken}`;
+  Axios.defaults.headers.common.Accept = 'Application/json';
   Axios.defaults.headers.common['X-Requested-With'] = 'XmlHttpRequest';
-  Axios.defaults.headers.common['Content-type'] = 'Application/json';
-  Axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
 }
 
 if (userToken !== null && userToken !== undefined) {
   Axios.defaults.headers.common.Authorization = `Bearer ${userToken}`;
+  Axios.defaults.headers.common.Accept = 'Application/json';
   Axios.defaults.headers.common['X-Requested-With'] = 'XmlHttpRequest';
-  Axios.defaults.headers.common['Content-type'] = 'Application/json';
-  Axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
 }
 
 const createStore = () => {
