@@ -47,12 +47,12 @@
                                                 <span v-text="item.body_1"></span>
                                             </nuxt-link>
                                         </li>
-                                        <li>
+                                        <!--<li>
                                             <nuxt-link :to="item.route_2">
                                                 <i :class="item.bodyIcon_2"></i>
                                                 <span v-text="item.body_2"></span>
                                             </nuxt-link>
-                                        </li>
+                                        </li>-->
                                     </ul>
                                 </div>
                             </li>

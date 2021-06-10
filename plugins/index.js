@@ -18,7 +18,10 @@ import {
     AlertErrors,
     AlertSuccess
 } from 'vform'
-
+import { ValidationProvider } from 'vee-validate';
+import Vuelidate from 'vuelidate'
+Vue.use(Vuelidate);
+Vue.component('ValidationProvider', ValidationProvider);
 Vue.component(HasError.name, HasError);
 Vue.component(AlertError.name, AlertError);
 Vue.component(AlertErrors.name, AlertErrors);
